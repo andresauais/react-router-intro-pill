@@ -1,14 +1,17 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 
 import Header from "../components/Header";
 import BeerCard from "../components/BeerCard";
 
+import BeersContext from "../context/BeersContext";
+
 import axios from "axios";
 
-function Home({beers, errors, loading}) {
+function Home() {
+  const { beers, error, loading, nextPage, isAuthenticated, login, logout } = useContext(BeersContext);
   return (
     <div>
-      <Header />
+      <Header/>
       <main className="container mt-4">
         <section className="row mb-2">
           <div className="col">
@@ -16,6 +19,7 @@ function Home({beers, errors, loading}) {
               <h1 className="h3 m-0">Punk API</h1>
               <button
                 className="btn btn-dark btn-sm ml-auto"
+                onClick={nextPage}
               >
                 Next page
               </button>

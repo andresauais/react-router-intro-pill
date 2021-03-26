@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Link} from 'react-router-dom';
+import BeersContext from "../context/BeersContext"
 
-function Header({ isAuthenticated, login, logout }) {
+function Header() {
+  const { isAuthenticated, login, logout } = useContext(BeersContext);
   return (
     <header className="bg-light p-2">
       <nav className="container d-flex align-items-center">

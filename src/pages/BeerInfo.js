@@ -1,8 +1,10 @@
-import React from "react";
-import {useParams, Link} from 'react-router-dom';
+import React, {useContext} from "react";
+import {useParams, Link } from 'react-router-dom';
 import Header from "../components/Header";
+import BeersContext from "../context/BeersContext"
 
-function BeerInfo({beers}) {
+function BeerInfo() {
+  const { beers, isAuthenticated, login, logut } = useContext(BeersContext);
   let { id } = useParams();
   const foundBeer = beers.find((beer) => beer.id == id)
 
