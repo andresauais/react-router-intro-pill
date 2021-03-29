@@ -7,6 +7,7 @@ import Find from "./pages/Find";
 
 import BeersContextProvider from './components/BeersContextProvider'
 
+import ReduxProvider from './redux/Provider'
 
 function App() {
   
@@ -19,20 +20,22 @@ function App() {
     setPage(page +1);
   }
   return (
-    <BeersContextProvider>
-      <Switch>
-        <Route path="/beers/find" component={Find} />
-        <Route path="/beers/:id">
-          <BeerInfo/>
-        </Route>
-        <Route exact path="/">
-          <Home
-            page={nextPage}
-            nextPage={nextPage}
-          />
-        </Route>
-      </Switch>
-    </BeersContextProvider>
+    <ReduxProvider>
+      <BeersContextProvider>
+        <Switch>
+          <Route path="/beers/find" component={Find} />
+          <Route path="/beers/:id">
+            <BeerInfo/>
+          </Route>
+          <Route exact path="/">
+            <Home
+              page={nextPage}
+              nextPage={nextPage}
+            />
+          </Route>
+        </Switch>
+      </BeersContextProvider>
+    </ReduxProvider>
   )
 }
 

@@ -1,4 +1,5 @@
 import * as BeerTypes from "./beerTypes";
+import initialState from './beerState'
 
 function reducer(state, action){
   switch (action.type) {
@@ -9,7 +10,7 @@ function reducer(state, action){
         error: null,
       };
     }
-    case BeerTypes.FETCH_SUCCESS{
+    case BeerTypes.FETCH_SUCCESS:{
       return {
         ...state,
         loading: false,
@@ -17,7 +18,7 @@ function reducer(state, action){
         beers: [...action.payload],
       };
     }
-    case AppTypes.FETCH_ERROR: {
+    case BeerTypes.FETCH_ERROR: {
       return {
         ...state,
         loading: false,
@@ -25,6 +26,8 @@ function reducer(state, action){
       };
     }
     default:
-      return state;
+      return initialState;
   }
 }
+
+export default reducer;
